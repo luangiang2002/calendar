@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="calendar.css">
+    
+</head>
+
+<body>
+    <div class="calendar">
+        <div class="header">
+            <p class="toDate"></p>
+            <button onclick="onToggle()">
+                <i class="fa-sharp fa-solid fa-angle-down"></i>
+            </button>
+        </div>
+        <div class="table">
+            <div class="table-month">
+                <div class="table-month-year" >
+                    <p class="current-date" onclick="isMonth()"> </p>
+                </div>
+                <div class="table-icon">
+                    <button class="btn-down">
+                        <i class="fa-solid fa-caret-down" id="down"></i>
+                    </button>
+                    <button class="btn-up"><i class="fa-solid fa-caret-up"></i></button>
+                </div>
+            </div>
+            <div class="renderMonth">
+            </div>
+            <div class="table-day">
+                <ul>
+                    <li>Mo</li>
+                    <li>Tu</li>
+                    <li>We</li>
+                    <li>Th</li>
+                    <li>Fr </li>
+                    <li>Sa</li>
+                    <li>Su </li>
+                </ul>
+                <ul class="days">
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="selector">
+            <div class="mini">
+                <button> <i class="fa-solid fa-minus"></i></button>
+                <p>30 mins</p>
+                <button><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="focus">
+                <button>
+                    <i class="fa-solid fa-caret-right"></i>
+                    Focus
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="calendar.js"></script>
+  
+</body>
+
+</html>
