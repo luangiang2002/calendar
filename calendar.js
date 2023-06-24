@@ -8,6 +8,8 @@ let date = new Date();
 currYear = date.getFullYear();
 currMonth = date.getMonth();
 const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+
 const renderCalendar = () => {
     toDate.innerHTML = date.toDateString();
     let lastDate = new Date(currYear, currMonth + 1, 0).getDate();
@@ -33,6 +35,18 @@ const renderCalendar = () => {
 
 }
 renderCalendar();
+
+const onToggle = () => {
+    if (table.style.display === "none") {
+        table.style.display = "block"
+    }
+    else {
+        table.style.display = "none"
+    }
+}
+
+
+// click next month and pre month
 icondownup.forEach(icon => {
     let date = "";
     icon.addEventListener("click", () => {
@@ -48,18 +62,14 @@ icondownup.forEach(icon => {
         renderCalendar();
     })
 })
-const onToggle = () => {
-    if (table.style.display === "none") {
-        table.style.display = "block"
-    }
-    else {
-        table.style.display = "none"
-    }
-}
+
+
+// load bảng month
 let monthRender = '';
 const monthLast=document.querySelector(".renderMonth")
 let monthShortNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 const renderMonth = () => {
+    
     for (let i = 0; i <monthShortNames.length; i++) {
         monthRender += `<p class=monthlast>${monthShortNames[i]}</p>`
     }
@@ -69,23 +79,41 @@ const renderMonth = () => {
     monthLast.innerHTML = monthRender
 }
 renderMonth()
-
+const monthLastClick=document.querySelectorAll(".monthlast")
 const daylast=document.querySelector(".table-day")
+
+// load khi click month
 const isMonth = () => {
+    let date = "";
+    date=new Date();
+    monthLastClick.forEach((month,index)=>{
+        month.addEventListener("click",()=>{
+            currMonth=date.setMonth(index)
+            currMonth=date.getMonth();
+            currMonth=date.getFullYear();
+            renderCalendar();
+            daylast.style.display="block"
+            monthLast.style.display="none"
+        })
+            
+    })
        if( monthLast.style.display=="none"){
         monthLast.style.display="grid"
         daylast.style.display="none"
-        currenDate.innerHTML = `  ${currYear}`;
+        currenDate.innerHTML = ` ${currYear}`;
        }
        else{
         monthLast.style.display="none"
         daylast.style.display="block"
         currenDate.innerHTML = ` ${month[currMonth]} ${currYear}`;
        }
+       renderCalendar()
 }
-// const renderMonthDay=document.querySelectorAll('.monthlast');
-// renderMonthDay.addEventListener("click",()=>{
-//     daylast.style.display="block"
-//     console.log("ksdukdjj");
-//     renderMonth()
-// })
+isMonth()
+// trở về ngày hiện tại
+toDate.addEventListener("click",()=>{
+    date=new Date();
+    currMonth=date.getMonth();
+    currYear=date.getFullYear()
+    renderCalendar();
+})
