@@ -85,6 +85,7 @@
 .table-day ul li {
     width: calc(100% / 7) !important;
     padding: 10px;
+    margin-bottom: 6px;
     cursor: pointer;
     position: relative;
     z-index: 1;
@@ -171,7 +172,7 @@
     color: white;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    row-gap: 30px;
+    row-gap: 60px;
     column-gap: 10px;
     align-items: center;
     justify-items: center;
@@ -184,21 +185,42 @@
 
 .monthlast {
     cursor: pointer;
-    animation: anition 0.1s ease-in;
+    animation: anitionMonth 0.2s ease;
 }
-
+.year{
+    animation: anitionMonth 0.2s ease;
+    cursor: pointer;
+}
 .renderYear {
     background-color: #2c2b2b;
     color: white;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    row-gap: 30px;
+    row-gap: 60px;
     column-gap: 10px;
     align-items: center;
     justify-items: center;
     display: none;
 }
-
+.btn-month{
+    display: none;
+}
+.btn-day{
+    display: block;
+}
+.btn-year{
+    display: none;
+}
+.year-before{
+    opacity: 0.5;
+}
+.year-after{
+    opacity: 0.5;
+}
+.time{
+   justify-content: center;
+    display: flex;
+}
 @keyframes anition {
     0% {
         transform: translateY(50px);
@@ -221,8 +243,39 @@
     }
 
 }
+@keyframes anitionMonth {
+    0% {
+        transform: translateY(-40px);
+       
+    }
+
+    50% {
+    
+        transform: translateY(-20px);
+    }
+
+    100% {
+       transform: translateY(0);
+    }
+}
 
 @media screen and (min-width:1400px) {
+    @keyframes anitionMonth {
+        0% {
+            transform: translateY(-100px);
+           
+        }
+    
+        50% {
+        
+            transform: translateY(-50px);
+        }
+    
+        100% {
+           transform: translateY(0);
+        }
+    }
+    
     .calendar {
         width: 50%;
         font-size: 30px;

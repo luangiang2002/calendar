@@ -15,48 +15,45 @@
         <div class="header">
             <p class="toDate"></p>
             <button onclick="onToggle()">
-               <i class="fa-sharp fa-solid fa-angle-down"></i>
+                <i class="fa-sharp fa-solid fa-angle-down"></i>
             </button>
         </div>
         <div class="table">
             <div class="table-month">
                 <div class="table-month-year">
-                    <p class="current-date" > </p>
+                    <p class="current-date"> </p>
                 </div>
                 <div class="table-icon">
-                    <button class="btn-down">
-                        <span class="prev">  <i class="fa-solid fa-caret-down" id="down"></i></span>
-                    </button>
-                    <button class="btn-up">
-                       <span class="next"> <i class="fa-solid fa-caret-up"></i></span>
-                    </button>
+                    <div class="btn-day">
+                        <button class="btn-down">
+                            <span class="prev"> <i class="fa-solid fa-caret-down" id="down"></i></span>
+                        </button>
+                        <button class="btn-up">
+                            <span class="next"> <i class="fa-solid fa-caret-up"></i></span>
+                        </button>
+                    </div>
+                    <div class="btn-month">
+                        <button class="btn-down">
+                            <span class="prevMonth"> <i class="fa-solid fa-caret-down" id="down"></i></span>
+                        </button>
+                        <button class="btn-up">
+                            <span class="nextMonth"> <i class="fa-solid fa-caret-up"></i></span>
+                        </button>
+                    </div>
+                    <div class="btn-year">
+                        <button class="btn-down">
+                            <span class="prevYear"> <i class="fa-solid fa-caret-down" id="down"></i></span>
+                        </button>
+                        <button class="btn-up">
+                            <span class="nextYear"> <i class="fa-solid fa-caret-up"></i></span>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="renderMonth">
-                <button class="btn-down">
-                    <span class="prev">  <i class="fa-solid fa-caret-down" id="down"></i></span>
-                </button>
-                <button class="btn-up">
-                   <span class="next"> <i class="fa-solid fa-caret-up"></i></span>
-                </button>
             </div>
             <div class="renderYear">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <p>6</p>
-                <p>7</p>
-                <p>7</p>
-                <p>8</p>
-                <p>9</p>
-                <p>10</p>
-                <p>11</p>
-                <p>12</p>
-                <p>13</p>
-                <p>14</p>
-                <p>15 </p>
+
             </div>
             <div class="table-day">
                 <ul>
@@ -75,8 +72,8 @@
         </div>
         <div class="selector">
             <div class="mini">
-                <button> <i class="fa-solid fa-minus"></i></button>
-                <p>30 mins</p>
+                <button><i class="fa-solid fa-minus"></i></button>
+                <p >30 mins</p>
                 <button><i class="fa-solid fa-plus"></i></button>
             </div>
             <div class="focus">
@@ -87,9 +84,10 @@
             </div>
         </div>
     </div>
-
+    <div class="time">00 : 00</div>
 
     <script src="calendar.js"></script>
+    <script src="time-out.js"></script>
 </body>
 
 </html>
