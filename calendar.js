@@ -139,7 +139,7 @@ const diplay = () => {
             clickYear.style.display = "block"
             monthLast.style.display = "none"
             clickMonth.style.display = "none"
-            currenDate.innerHTML = `${year - 3} - ${year + 6}`;
+            currenDate.innerHTML = `${year - (year % 10)} - ${(year - (year % 10)) + 9}`;
         }
         // else{
         //     yearLast.style.display = "none"
