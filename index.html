@@ -7,7 +7,7 @@
     <title>Calendar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="calendar.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                             <span class="prev"> <i class="fa-solid fa-caret-down" id="down"></i></span>
                         </button>
                         <button class="btn-up">
-                            <span class="next"> <i class="fa-solid fa-caret-up"></i></span>
+                            <span class="next"> <i class="fa-solid fa-caret-up "></i></span>
                         </button>
                     </div>
                     <div class="btn-month">
@@ -57,13 +57,13 @@
             </div>
             <div class="table-day">
                 <ul>
+                    <li>Su </li>
                     <li>Mo</li>
                     <li>Tu</li>
                     <li>We</li>
                     <li>Th</li>
                     <li>Fr </li>
                     <li>Sa</li>
-                    <li>Su </li>
                 </ul>
                 <ul class="days">
                     <li></li>
@@ -73,7 +73,7 @@
         <div class="selector">
             <div class="mini">
                 <button><i class="fa-solid fa-minus"></i></button>
-                <p >30 mins</p>
+                <p ><span class="period"></span><span> mins</span></p>
                 <button><i class="fa-solid fa-plus"></i></button>
             </div>
             <div class="focus">

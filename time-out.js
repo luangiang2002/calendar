@@ -1,37 +1,42 @@
-let minusHours = document.querySelector(".fa-minus");
-let increaseHours = document.querySelector(".fa-plus");
-let timeOut = document.querySelector('.time')
-let focus = document.querySelector('.focus button')
-let totalSeconds = 30
-const clickMini = () => {
-    minusHours.addEventListener('click', () => {
-        totalSeconds -= 30
-        UpdateTimeOut()
-    })
+let periodFocus = 30;
+updatePeriodFocus(periodFocus);
+const minusTimeBtn = document.querySelector('.fa-minus');
+const plusTimeBtn = document.querySelector('.fa-plus');
+
+minusTimeBtn.addEventListener('click', () => {
+    if (periodFocus === 5) return;
+    periodFocus -= 5;
+    updatePeriodFocus(periodFocus);
+});
+
+plusTimeBtn.addEventListener('click', () => {
+    periodFocus += 5;
+    updatePeriodFocus(periodFocus);
+});
+
+function updatePeriodFocus() {
+    document.querySelector('.period').textContent = periodFocus;
 }
-const clickSeconds = () => {
-    increaseHours.addEventListener('click', () => {
-        totalSeconds += 30 
-        UpdateTimeOut()
-    })
+let interval;
+function startFocus(duration) {
+    let minutes = duration;
+    let second = 0;
+    clearInterval(interval);
+    interval = setInterval(() => {
+        if (second === 0) {
+            if (minutes === 0) {
+                clearInterval(interval);
+                return;
+            }
+            minutes--;
+            second = 60;
+        }
+        second--;
+        document.querySelector('.time').textContent = `${minutes}:${second < 10 ? '0' + second : second}`;
+    }, 1000);
 }
-clickMini();
-clickSeconds();
-let setinter=''
+
+focus = document.querySelector('.focus')
 focus.addEventListener('click', () => {
-    UpdateTimeOut();
-    setinter = setInterval(UpdateTimeOut, 1000)
-})
-
-function UpdateTimeOut() {
-    const minutes = Math.floor(totalSeconds / 60);
-    let seconds = totalSeconds % 60;
-    timeOut.innerHTML = `${minutes} : ${seconds}`
-    totalSeconds--
-    if (minutes == 0 && seconds == 0) {
-        clearInterval(setinter)
-        alert('Hết thời gian')
-    }
-  
-
-}
+    startFocus(periodFocus);
+});

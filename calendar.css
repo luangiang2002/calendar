@@ -17,6 +17,7 @@
     height: 50px;
     line-height: 50px;
     padding: 0 20px;
+    cursor: pointer;
 }
 
 .calendar .header button {
@@ -42,7 +43,9 @@
     color: white;
     padding: 20px 20px;
 }
-
+.table-icon i{
+    font-size: 30px;
+}
 .table .table-month {
     display: flex;
     justify-content: space-between;
@@ -97,12 +100,11 @@
     height: 40px;
     width: 40px;
     top: 50%;
-    left: 50%;
+    left: 55%;
     z-index: -1;
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
-
 .table-day ul li:hover:before {
     background: gray;
 }
@@ -154,14 +156,12 @@
     opacity: 0.5;
 }
 
-.active::before {
+.active::before{
+    content: '';
     background-color: rgb(38, 76, 159);
-    height: 40px;
-    width: 40px;
     border-radius: 50%;
-
+    display: block;
 }
-
 .current-date {
     cursor: pointer;
 }
@@ -177,19 +177,18 @@
     justify-items: center;
     display: none;
 }
-
 .mothlastOf {
     opacity: 0.5;
 }
-
 .monthlast {
     cursor: pointer;
     animation: anitionMonth 0.2s ease;
 }
-.year{
+.year {
     animation: anitionMonth 0.2s ease;
     cursor: pointer;
 }
+
 .renderYear {
     background-color: #2c2b2b;
     color: white;
@@ -201,38 +200,47 @@
     justify-items: center;
     display: none;
 }
-.btn-month{
+
+.btn-month {
     display: none;
 }
-.btn-day{
+
+.btn-day {
     display: block;
 }
-.btn-year{
+
+.btn-year {
     display: none;
 }
-.year-before{
+
+.year-before {
     opacity: 0.5;
 }
-.year-after{
+
+.year-after {
     opacity: 0.5;
 }
-.time{
-   justify-content: center;
+
+.time {
+    justify-content: center;
     display: flex;
+    font-size: 20px;
+    margin-top: -40px;
 }
+
 @keyframes anition {
     0% {
         transform: translateY(50px);
-       
+
     }
 
     50% {
-    
+
         transform: translateY(20px);
     }
 
     100% {
-       transform: translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -242,39 +250,69 @@
     }
 
 }
+
 @keyframes anitionMonth {
     0% {
         transform: translateY(-40px);
-       
+
     }
 
     50% {
-    
+
         transform: translateY(-20px);
     }
 
     100% {
-       transform: translateY(0);
+        transform: translateY(0);
     }
 }
 
+
+@media screen and (min-width:2000px) {
+    .calendar {
+        width: 25% !important;
+        font-size: 30px;
+    }
+    .table-day ul li {
+        font-size: 25px !important;
+    }
+    .table-day ul li::before {
+        width: 60px;
+        height:60px;
+        left: 50%;
+    }
+
+}
+
 @media screen and (min-width:1400px) {
+    .calendar {
+        width: 30%;
+        font-size: 30px;
+    }
+    .table-day ul li {
+        padding: 20px;
+        font-size: 20px;
+    }
+
+}
+
+@media screen and (max-width:1000px) {
     @keyframes anitionMonth {
         0% {
             transform: translateY(-100px);
-           
+
         }
-    
+
         50% {
-        
+
             transform: translateY(-50px);
         }
-    
+
         100% {
-           transform: translateY(0);
+            transform: translateY(0);
         }
     }
-    
+
     .calendar {
         width: 50%;
         font-size: 30px;
@@ -286,13 +324,13 @@
     }
 
     .table-day ul li {
-        padding: 40px;
-        font-size: 40px;
+        padding: 20px;
+        font-size: 20px;
     }
 
     .table-day ul li::before {
-        width: 90px;
-        height: 90px;
+        width: 50px;
+        height: 50px;
     }
 
     .selector {
@@ -334,18 +372,64 @@
 
     .focus button i {
         margin-right: 5px;
-        font-size: 40px;
+        font-size: 30px;
     }
 
     .renderMonth {
-        row-gap: 160px;
+        row-gap: 100px;
         margin: 50px 0;
-        font-size: 40px;
+        font-size: 30px;
     }
 
     .renderYear {
-        row-gap: 160px;
+        row-gap: 100px;
         margin: 50px 0;
-        font-size: 40px;
+        font-size: 30px;
     }
+}
+
+@media screen and (max-width:600px) {
+    .calendar {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .table-day ul li {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .table-day ul li::before {
+        width: 30px;
+        height:30px;
+    }
+    .calendar .header button i {
+        font-size: 10px;
+    }
+    .calendar .header button i {
+        color: white;
+        font-size: 18px;
+        margin-top: 2px;
+        opacity: 0.7;
+    }
+    .calendar .header button {
+        width: 30px;
+        height: 30px;
+    }
+    .selector{
+        line-height: unset;
+    }
+    .focus button{
+        width: 100px;
+        font-size: 20px;
+    }
+    .renderYear{
+        font-size: 20px;
+        row-gap: 50px;
+    }
+    .renderMonth{
+        font-size: 20px;
+        row-gap: 50px;
+    }
+
 }

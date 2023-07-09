@@ -12,7 +12,7 @@ currenDate.innerHTML = ` ${month[currMonth]} ${year}`;
 const renderCalendar = () => {
     toDate.innerHTML = date.toDateString();
     let lastDate = new Date(year, currMonth + 1, 0).getDate();
-    let lastDateOf = new Date(year, currMonth, 0).getDay();
+    let lastDateOf = new Date(year, currMonth, 1).getDay();
     let lastDatelastOf = new Date(year, currMonth, 0).getDate();
     let DatelastOf = new Date(year, currMonth, lastDate).getDay();
     let table = ''
@@ -22,10 +22,9 @@ const renderCalendar = () => {
     }
     for (let i = 1; i <= lastDate; i++) {
         let today = i === date.getDate() && currMonth === date.getMonth() && year === date.getFullYear() ? "active" : ""
-
         table += `<li class=${today}>${i}</li>`
     }
-    for (let i = DatelastOf; i < 7; i++) {
+    for (let i = DatelastOf; i < 6; i++) {
         table += `<li class="opacity">${i - DatelastOf + 1}</li>`
     }
 
@@ -87,7 +86,8 @@ let monthShortNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "
 const renderMonth = () => {
     let monthRender = '';
     for (let i = 0; i < monthShortNames.length; i++) {
-        monthRender += `<p class="monthlast" data-month="${i}" data-year="${year}">${monthShortNames[i]}</p>`
+        let Tomon =i=== date.getMonth()+1 && year === date.getFullYear() ? "active" : ""
+        monthRender += `<p class="monthlast ${Tomon} " data-month="${i}" data-year="${year}">${monthShortNames[i]}</p>`
     }
     for (let i = 0; i < 4; i++) {
         monthRender += `<p class="monthlast mothlastOf" data-month="${i}" data-year="${year + 1}">${monthShortNames[i]}</p>`
@@ -141,14 +141,12 @@ const diplay = () => {
             clickMonth.style.display = "none"
             currenDate.innerHTML = `${year - (year % 10)} - ${(year - (year % 10)) + 9}`;
         }
-        // else{
-        //     yearLast.style.display = "none"
-        //     clickMonth.style.display = "block"
-        // }
+
     }
+
 }
 diplay();
-currenDate.removeEventListener('click',diplay)
+currenDate.removeEventListener('click', diplay)
 currenDate.addEventListener('click', () => {
     diplay();
 })
@@ -165,8 +163,6 @@ monthLast.addEventListener('click', function (e) {
         currenDate.innerHTML = `${month[currMonth]} ${year}`;
         currenDate.classList.add("year-click")
         renderCalendar()
-        console.log(currMonth);
-        console.log(year);
     }
     renderCalendar();
 });
@@ -192,8 +188,11 @@ toDate.addEventListener("click", () => {
     currMonth = date.getMonth();
     year = date.getFullYear()
     daylast.style.display = "block"
-    monthLast.style.display = "none"
+    yearLast.style.display = "none"
     clickYear.style.display = "none"
+    monthLast.style.display = "none"
+    clickMonth.style.display = "none"
+    clickDay.style.display = "block"
     currenDate.innerHTML = `${month[currMonth]} ${year}`;
     renderCalendar();
 })
